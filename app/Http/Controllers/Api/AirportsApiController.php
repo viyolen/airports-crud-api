@@ -31,7 +31,7 @@ class AirportsApiController extends Controller
             //$options['sort'] = '_geoRadius(' . $latitude . ', ' . $longitude . ', 30000)';
 
             $options['sort'] = ['_geoPoint(' . $latitude . ', ' . $longitude . '):asc'];
-            // $options['limit'] = 5;
+            $options['limit'] = 5;
             return $meilisearch->search($query, $options);
         })->get()->mapWithKeys(function ($value) use ($latitude, $longitude) {
             return [$value->id => [
