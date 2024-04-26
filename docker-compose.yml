@@ -1,4 +1,4 @@
-version: '3.8'
+version: '3.3'
 
 services:
     laravel.test:
@@ -21,8 +21,6 @@ services:
             IGNITION_LOCAL_SITES_PATH: '${PWD}'
         volumes:
             - '.:/var/www/html'
-        networks:
-            - sail
         depends_on:
             - mysql
             - meilisearch
@@ -58,10 +56,6 @@ services:
             test: ["CMD", "wget", "--no-verbose", "--spider", "http://localhost:7700/health"]
             retries: 3
             timeout: 5s
-
-networks:
-    sail:
-        driver: bridge
 
 volumes:
     sail-mysql:
